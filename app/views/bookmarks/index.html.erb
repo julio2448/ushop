@@ -1,0 +1,6 @@
+<h1>Displaying all bookmarks<h1>
+<ul>
+<% @bookmarks.each do |bookmark| %>
+<li><%= bookmark.client.email%></li>
+<% end %>
+</ul>
