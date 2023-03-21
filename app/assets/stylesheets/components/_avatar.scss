@@ -1,20 +1,20 @@
 .avatar {
-  width: 40px;
-  border-radius: 50%;
-}
-.avatar-large {
-  width: 56px;
-  border-radius: 50%;
-}
-.avatar-bordered {
-  width: 40px;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
-}
-.avatar-square {
-  width: 40px;
-  border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 48px;
+	height: 48px;
+	padding: 0;
+	border-radius: 15px;
+	overflow: hidden;
+	border: 3px solid #fff;
+	box-shadow: 0 8px 10px -4px rgba(#000, 0.2);
+	transform-origin: center center;
+	transition: 0.15s ease;
+	cursor: pointer;
+	&:hover,
+	&:focus {
+		transform: translatey(-4px);
+		box-shadow: 0 12px 14px -4px rgba(#000, 0.3);
+	}
 }

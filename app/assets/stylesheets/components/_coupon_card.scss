@@ -3,19 +3,13 @@
 	transform: rotate(var(--rotation));
 	transition: 0.15s ease-out;
 
-	&:nth-child(2) {
-		margin-top: 1rem;
-		--rotation: 5deg;
-		.card-inner:after {
-			background-color: var(--c-green-300);
-		}
 
 		.card-pin {
 			top: 20px;
 			left: 20px;
 			transform: rotate(-5deg);
 		}
-	}
+
 
 	& + & {
 		margin-left: 2rem;
