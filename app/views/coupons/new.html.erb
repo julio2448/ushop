@@ -1,0 +1,9 @@
+<h1>ENTER INFO FOR YOUR NEW COUPON</h1>
+<%= simple_form_for [@coupon] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :start_time %>
+  <%= f.input :end_time %>
+  <%= f.input :product_name %>
+  <%= f.input :product_description %>
+  <%= f.submit %>
+<% end %>
