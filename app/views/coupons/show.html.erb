@@ -1,0 +1,12 @@
+<h1>Displaying information about <%= @coupon.title %><h1>
+<ul>
+<li><%= @coupon.owner.email %></li>
+<li><%= @coupon.start_time %></li>
+<li><%= @coupon.end_time %></li>
+<li><%= @coupon.product_name %></li>
+<li><%= @coupon.product_description %></li>
+<li><%= @coupon.code %></li>
+</ul>
+<h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h2>
+<h2><%= link_to "Edit Coupon?", edit_coupon_path(@coupon) %></h2>
+<h2><%= link_to "Back to all Coupons", coupons_path %></h2>
