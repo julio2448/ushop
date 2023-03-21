@@ -1,4 +1,6 @@
 class CouponsController < ApplicationController
+  before_action :authenticate_user!, only: [:destroy]
+
   def index
     @coupons = Coupon.all
   end
@@ -21,6 +23,15 @@ class CouponsController < ApplicationController
     @coupon = Coupon.new
   end
 
+  def my_coupons
+    if current_user
+      @my_coupons = current_user.coupons
+    else
+      flash[:alert] = 'You need to sign in'
+      redirect_to new_user_session_path
+    end
+  end
+
   def create
     @coupon = Coupon.new(coupon_params)
     @coupon.owner = current_user
@@ -28,7 +39,7 @@ class CouponsController < ApplicationController
     if @coupon.save
       redirect_to @coupon
     else
-      render "coupons/new"
+      render "coupons/new", status: :unprocessable_entity
     end
   end
 
@@ -41,6 +52,6 @@ class CouponsController < ApplicationController
   private
 
   def coupon_params
-    params.require(:coupon).permit(:title, :availibility, :start_time, :end_time, :product_name, :product_description)
+    params.require(:coupon).permit(:title, :availibility, :start_time, :end_time, :product_name, :product_description, :code)
   end
 end

@@ -7,6 +7,15 @@
 <li><%= @coupon.product_description %></li>
 <li><%= @coupon.code %></li>
 </ul>
-<h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h2>
-<h2><%= link_to "Edit Coupon?", edit_coupon_path(@coupon) %></h2>
+<% if current_user.id == @coupon.owner.id%>
+  <h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h2>
+  <h2><%= link_to "Edit Coupon?", edit_coupon_path(@coupon) %></h2>
+<% end %>
 <h2><%= link_to "Back to all Coupons", coupons_path %></h2>
+  <% if current_user.coupon_taken?(@coupon) %>
+  <h2>You already own this coupon</h2>
+  <% else %>
+  <h2><%= link_to "Add this Coupon?", create_bookmark_path(@coupon.id), data: {turbo_method: :post}%></h2>
+<%end%>
+
+<h2><%=@coupon.available? %> </h2>
