@@ -27,19 +27,50 @@
           U-SHOP
         </div>
         <div class="header-buttons">
-
-          <button class="avatar">
+          <button class="avatar" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
           </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content text-center"> <!-- Added text-center class -->
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Signup or Login</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <button type="button" class="bttn"><%= link_to "Login", new_user_session_path  %></button>
+                  <button type="button" class="bttn"><%= link_to "Sign-up", new_user_registration_path  %></button>
+                  <hr>
+                  <p style="font-size: small; margin-top: 10px;">or register as a business</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </header>
 
       <%= yield %>
       <footer class="menu">
         <div class="menu-inner">
-
+          <a href="#" class="menu-item active">
+            <i class="fa-regular fa-cart-shopping" ></i>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fa-regular fa-cart-shopping"></i>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fa-regular fa-cart-shopping"></i>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fa-regular fa-cart-shopping"></i>
+          </a>
         </div>
-	    </footer>
+      </footer>
     </div>
+
   </body>
 </html>
