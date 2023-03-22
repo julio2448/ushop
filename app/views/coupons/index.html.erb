@@ -5,14 +5,18 @@
 
 <ul>
 <% @coupons.each do |coupon| %>
-  <li><%= link_to coupon.title,coupon_path(coupon) %></li>
+  <% if coupon.available? %>
+    <li><%= link_to coupon.title,coupon_path(coupon) %></li>
+  <% end %>
 <% end %>
 </ul>
-
-<div class="flex">
-  <%= link_to "Continue", new_coupon_path, class: "bttn" %>
-</div>
-
-<%= link_to "New Coupon", new_coupon_path %>
-<%= link_to "My Coupons", my_coupons_path %>
-<%= link_to "My Bookmarks", my_bookmarks_path %>
+<% if user_signed_in? %>
+  <div class="flex">
+  <% if current_user.customer? %>
+    <%= link_to "My Bookmarks", my_bookmarks_path, class: "bttn" %>
+  <% else %>
+    <%= link_to "Create new coupon", new_coupon_path, class: "bttn" %>
+    <%= link_to "My Coupons", my_coupons_path, class: "bttn" %>
+  <% end %>
+  </div>
+<% end %>

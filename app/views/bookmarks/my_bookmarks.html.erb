@@ -2,9 +2,9 @@
 <ul>
 <% @my_bookmarks.each do |bookmark|%>
   <% if bookmark.coupon.available? %>
-  <%= bookmark.coupon.end_time%>
   <li><%= link_to bookmark.coupon.title, coupon_path(bookmark.coupon) %></li>
+  <h6>EXPIRATION DATE : <%= bookmark.coupon.end_time%></h6>
   <% end %>
 <% end %>
 </ul>
-<h2><%= link_to "All coupons",coupons_path %></h2>
+<h2><%= link_to "All coupons",coupons_path, class: "bttn" %></h2>
