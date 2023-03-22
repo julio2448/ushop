@@ -9,8 +9,8 @@ puts "Creating 20 coupons"
   Coupon.create!(
     availibility: true,
     title: Faker::Job.title,
-    start_time: Faker::Date.between(from: 2.days.ago, to: Date.today),
-    end_time: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    start_time: Faker::Date.between(from: 10.days.ago, to: 5.days.ago),
+    end_time: Faker::Date.between(from: 4.days.ago, to: Date.today),
     product_name: Faker::Job.title,
     product_description: Faker::Job.title,
     code: Faker::Job.title,
