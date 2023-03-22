@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>Ushop</title>
@@ -8,11 +7,39 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <link rel="stylesheet" href="styles.css">
+
   </head>
+    <div class="phone">
+      <body><%= render "shared/navbar" %>
+        <%= render "shared/flashes" %>
+        <header class="header">
+        <div class="header-logo">
+          <div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="header-title">
+          U-SHOP
+        </div>
+        <div class="header-buttons">
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+          <button class="avatar">
+            <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
+          </button>
+        </div>
+      </header>
 
-    <%= yield %>
+      <%= yield %>
+      <footer class="menu">
+        <div class="menu-inner">
+
+        </div>
+	    </footer>
+    </div>
   </body>
 </html>

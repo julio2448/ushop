@@ -1,2 +1,39 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="title">
+  <h1>Welcome to U-SHOP</h1>
+  <p>Search for coupons perfect for saving money</p>
+</section>
+<section class="search">
+  <div class="search-inner">
+      <a href="/coupons" class="search-button">
+        <i class="ai-search"></i>
+      </a>
+    <input type="text" class="search-input" placeholder="Search for Supermarkets near you" />
+  </div>
+</section>
+<nav class="navigation">
+  <a href="#" class="navigation-item active">Featured</a>
+  <a href="#" class="navigation-item">My Coupons</a>
+</nav>
+<div class="card-container">
+  <section class="coupons">
+    <% @coupons.each do |coupon| %>
+    <article class="card">
+      <div class="card-inner">
+        <span class="card-pin"></span>
+        <div class="card-image">
+          <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-subtitle"><%= coupon.title %></span>
+            <button class="card-meta-button">
+              <i class="ai-circle-triangle-right-fill"></i>
+            </button>
+          </div>
+          <h2 class="card-title"><%= coupon.product_name %></h2>
+        </div>
+      </div>
+    </article>
+    <% end %>
+  </section>
+</div>

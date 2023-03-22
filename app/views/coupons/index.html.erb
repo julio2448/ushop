@@ -1,9 +1,18 @@
-<h1>Displaying all coupons<h1>
+<section class="title">
+  <h1>Displaying all coupons<h1>
+  <p>results for your search</p>
+</section>
+
 <ul>
 <% @coupons.each do |coupon| %>
   <li><%= link_to coupon.title,coupon_path(coupon) %></li>
 <% end %>
 </ul>
+
+<div class="flex">
+  <%= link_to "Continue", new_coupon_path, class: "bttn" %>
+</div>
+
 <%= link_to "New Coupon", new_coupon_path %>
 <%= link_to "My Coupons", my_coupons_path %>
 <%= link_to "My Bookmarks", my_bookmarks_path %>
