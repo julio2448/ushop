@@ -20,7 +20,12 @@ class CouponsController < ApplicationController
   end
 
   def new
-    @coupon = Coupon.new
+    if current_user
+      @coupon = Coupon.new
+    else
+      flash[:alert] = 'You need to sign in'
+      redirect_to new_user_session_path
+    end
   end
 
   def my_coupons
