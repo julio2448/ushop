@@ -1,8 +1,8 @@
 <h1> Displaying your current coupons </h1>
 <ul>
-<% @my_coupons.each do |coupon|%>
-<li><%= link_to coupon.title, coupon_path(coupon) %></li>
-<% end %>
+  <% @my_coupons.each do |coupon|%>
+  <li><%= link_to coupon.title, coupon_path(coupon) %></li>
+  <% end %>
 </ul>
 <h2><%= link_to "New Coupon", new_coupon_path %></h2>
 <h2><%= link_to "Back to all coupons",coupons_path %></h2>
