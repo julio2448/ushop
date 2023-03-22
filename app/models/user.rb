@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def coupon_taken?(coupon)
     bookmarks.map(&:coupon_id).include?(coupon.id)
   end
+
+  def customer?
+    role == "customer"
+  end
 end

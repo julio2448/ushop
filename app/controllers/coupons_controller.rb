@@ -40,7 +40,6 @@ class CouponsController < ApplicationController
   def create
     @coupon = Coupon.new(coupon_params)
     @coupon.owner = current_user
-    @coupon.availibility = true
     if @coupon.save
       redirect_to @coupon
     else
