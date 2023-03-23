@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_171522) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_190950) do
->>>>>>> master
+ActiveRecord::Schema[7.0].define(version: 2023_03_23_222206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_190950) do
     t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
     t.index ["owner_id"], name: "index_coupons_on_owner_id"
   end
 
