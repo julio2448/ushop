@@ -1,5 +1,10 @@
 <h1>Displaying information about <%= @coupon.title %><h1>
   <ul>
+    <% if @coupon.photo.key %>
+      <%= cl_image_tag @coupon.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else%>
+      <%= image_tag 'https://res.cloudinary.com/dkkxkbhih/image/upload/v1678911558/No-Image-Placeholder.svg_tmw0tt.png', height: 200, width: 200, crop: :fill %>
+    <% end %>
     <li><%= @coupon.owner.email %></li>
     <li><%= @coupon.start_time %></li>
     <li><%= @coupon.end_time %></li>
