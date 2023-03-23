@@ -4,63 +4,36 @@
 </section>
 
 <div class="card-container">
-  <section class="coupons">
+  <div class="row row-cols-1">
     <% @coupons.each do |coupon| %>
-    <article class="card">
-      <div class="card-inner">
-        <span class="card-pin"></span>
-        <div class="card-image">
-          <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
-        </div>
-        <div class="card-content">
-          <div class="card-meta">
-            <span class="card-subtitle"><%= coupon.title %></span>
-            <button class="card-meta-button">
-              <i class="ai-circle-triangle-right-fill"></i>
-            </button>
+      <article class="card col m-3">
+        <div class="card-inner">
+          <span class="card-pin"></span>
+          <div class="card-image">
+            <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
           </div>
-          <h2 class="card-title"><%= coupon.product_name %></h2>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-subtitle"><%= coupon.title %></span>
+              <button class="card-meta-button">
+                <i class="ai-circle-triangle-right-fill"></i>
+              </button>
+            </div>
+            <h2 class="card-title"><%= coupon.product_name %></h2>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
     <% end %>
-  </section>
+  </div>
 </div>
 
-<div class="coupon-container">
-  <% @coupons.each_slice(2) do |coupons| %>
-    <div class="row mt-15">
-      <% coupons.each do |coupon| %>
-        <% if coupon.available? %>
-          <div class="col">
-              <%= link_to coupon_path(coupon) do %>
-              <article class="card" style="margin-top: 50px;">
-                <div class="card-inner">
-                  <span class="card-pin"></span>
-                  <div class="card-image">
-                    <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
-                  </div>
-                  <div class="card-content">
-                    <div class="card-meta">
-                      <span class="card-subtitle"><%= coupon.title %></span>
-                      <button class="card-meta-button">
-                        <i class="ai-circle-triangle-right-fill"></i>
-                      </button>
-                    </div>
-                    <h2 class="card-title"><%= coupon.product_name %></h2>
-                  </div>
-                </div>
-              </article>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+
+
+
+
 
 <% if user_signed_in? %>
-  <div class="flex">
+  <div class="flex" style="margin-top: 78px;">
     <% if current_user.customer? %>
       <%= link_to "My Bookmarks", my_bookmarks_path, class: "bttn" %>
     <% else %>
