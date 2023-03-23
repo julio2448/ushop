@@ -9,6 +9,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/cc3c17c8d6.js" crossorigin="anonymous"></script>
 
   </head>
     <div class="phone">
@@ -54,22 +55,7 @@
       </header>
 
       <%= yield %>
-      <footer class="menu">
-        <div class="menu-inner">
-          <a href="#" class="menu-item active">
-            <i class="fa-regular fa-cart-shopping" ></i>
-          </a>
-          <a href="#" class="menu-item">
-            <i class="fa-regular fa-cart-shopping"></i>
-          </a>
-          <a href="#" class="menu-item">
-            <i class="fa-regular fa-cart-shopping"></i>
-          </a>
-          <a href="#" class="menu-item">
-            <i class="fa-regular fa-cart-shopping"></i>
-          </a>
-        </div>
-      </footer>
+      <%= render "shared/footer" %>
     </div>
 
   </body>
