@@ -10,36 +10,48 @@
 
     <link rel="stylesheet" href="styles.css">
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+
   </head>
-    <div class="phone">
-      <body><%= render "shared/navbar" %>
-        <%= render "shared/flashes" %>
-        <header class="header">
-        <div class="header-logo">
-          <div>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-        <div class="header-title">
-          U-SHOP
-        </div>
-        <div class="header-buttons">
 
-          <button class="avatar">
-            <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
-          </button>
-        </div>
-      </header>
 
-      <%= yield %>
-      <footer class="menu">
-        <div class="menu-inner">
 
+<div class="phone">
+  <body>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <header class="header">
+      <div class="header-logo">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-	    </footer>
-    </div>
+      </div>
+      <div class="header-title">
+        U-SHOP
+      </div>
+      <div class="header-buttons">
+        <button class="avatar">
+          <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
+        </button>
+      </div>
+    </header>
+    <%= yield %>
+    <footer class="menu">
+      <div class="menu-inner">
+
+      </div>
+    </footer>
   </body>
+</div>
+
+
+
 </html>
