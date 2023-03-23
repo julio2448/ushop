@@ -9,4 +9,8 @@ class Coupon < ApplicationRecord
   def available?
     Date.today < end_time
   end
+
+  def time_left
+    (end_time - Date.today).to_i
+  end
 end
