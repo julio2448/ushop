@@ -1,31 +1,44 @@
-<h1>Displaying information about <%= @coupon.title %><h1>
-  <ul>
-    <% if @coupon.photo.key %>
-      <%= cl_image_tag @coupon.photo.key, height: 300, width: 400, crop: :fill %>
-    <% else%>
-      <%= image_tag 'https://res.cloudinary.com/dkkxkbhih/image/upload/v1678911558/No-Image-Placeholder.svg_tmw0tt.png', height: 200, width: 200, crop: :fill %>
-    <% end %>
-    <li><%= @coupon.owner.email %></li>
-    <li><%= @coupon.start_time %></li>
-    <li><%= @coupon.end_time %></li>
-    <li><%= @coupon.product_name %></li>
-    <li><%= @coupon.product_description %></li>
-    <li><%= @coupon.code %></li>
-  </ul>
-<% if user_signed_in? %>
-  <% if current_user.id == @coupon.owner.id%>
-    <h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
-    <h2><%= link_to "Edit Coupon?", edit_coupon_path(@coupon), class: "bttn" %></h2>
-  <% end %>
-  <h2><%= link_to "Back to all Coupons", coupons_path, class: "bttn" %></h2>
-    <% if current_user.coupon_taken?(@coupon) %>
-        <h2>You already own this coupon</h2>
+<div class="container" style="justify-content: center; line-height: 2.5;">
+  <h1>Displaying information about <%= @coupon.title %></h1>
+   <article class="card-show">
+    <div class="card-inner-show">
+      <div class="card-image-show">
+        <img src="https://assets.codepen.io/285131/illustration-hand-with-cigarette-icon.jpg" />
+      </div>
+      <div class="card-content-show">
+        <div class="card-meta-show">
+          <span class="card-meta-number-show">
+            <ul style="list-style: none; justify-content: center; font-size: 15px;">
+              <li><strong><%= @coupon.product_name %></strong></li>
+              <li><%= @coupon.owner.email %></li>
+              <li><%= @coupon.start_time %></li>
+              <li><%= @coupon.end_time %></li>
+              <li><%= @coupon.product_description %></li>
+            </ul>
+          </span>
+        </div>
+        <strong class="coupon-code" style="font-size: 30px;"><%= @coupon.code %></strong>
+      </div>
+    </div>
+  </article>
+
+  <div class="button-container" style="margin-top: 200px; justify-content: center;">
+    <% if user_signed_in? %>
+      <% if current_user.id == @coupon.owner.id%>
+        <h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
+        <h2><%= link_to "Edit Coupon?", edit_coupon_path(@coupon), class: "bttn" %></h2>
+      <% end %>
+      <h2><%= link_to "Back to all Coupons", coupons_path, class: "bttn" %></h2>
+        <% if current_user.coupon_taken?(@coupon) %>
+            <h2>You already own this coupon</h2>
+        <% else %>
+            <h2><%= link_to "Add this Coupon?", create_bookmark_path(@coupon.id), data: {turbo_method: :post}, class: "bttn"%></h2>
+      <%end%>
+    <%end%>
+    <% if @coupon.available? %>
+      <h2><strong>This Coupon is available! </strong></h2>
     <% else %>
-        <h2><%= link_to "Add this Coupon?", create_bookmark_path(@coupon.id), data: {turbo_method: :post}, class: "bttn"%></h2>
-  <%end%>
- <%end%>
-<% if @coupon.available? %>
-  <h2><strong>This Coupon is available! </strong></h2>
-<% else %>
-  <h2><strong>This Coupon is no longer available</strong></h2>
-<% end %>
+      <h2><strong>This Coupon is no longer available</strong></h2>
+    <% end %>
+  </div>
+</div>
