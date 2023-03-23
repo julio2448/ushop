@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :coupons, foreign_key: :owner_id, class_name: "Coupon", dependent: :destroy
   has_many :bookmarks, foreign_key: :client_id, class_name: "Bookmark", dependent: :destroy
 
+  scope :customers, -> { where(role: "customer") }
+  scope :owners, -> { where(role: "business") }
+
   def coupon_taken?(coupon)
     bookmarks.map(&:coupon_id).include?(coupon.id)
   end

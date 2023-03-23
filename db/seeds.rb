@@ -4,6 +4,18 @@ puts "Creating 10 users"
 end
 puts "10 Users created"
 
+# users = User.all
+# customers = []
+# owners = []
+
+# users.each do |user|
+#   if user.customer?
+#     customers << user
+#   else
+#     owners << user
+#   end
+# end
+
 puts "Creating 20 coupons"
 20.times do
   Coupon.create!(
@@ -13,15 +25,16 @@ puts "Creating 20 coupons"
     product_name: Faker::Job.title,
     product_description: Faker::Job.title,
     code: Faker::Code.nric,
-    owner: User.all.sample
+    owner: User.owners.sample
   )
 end
 puts "20 Coupons created"
 
+
 puts "Creating 30 bookmarks"
 30.times do
   Bookmark.create!(
-    client: User.all.sample,
+    client: User.customers.sample,
     coupon: Coupon.all.sample
   )
 end
