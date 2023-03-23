@@ -8,7 +8,14 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  scope :customers, -> { where(role: "customer") }
+  scope :owners, -> { where(role: "business") }
+
   def coupon_taken?(coupon)
     bookmarks.map(&:coupon_id).include?(coupon.id)
+  end
+
+  def customer?
+    role == "customer"
   end
 end

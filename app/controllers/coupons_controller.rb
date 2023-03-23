@@ -40,7 +40,6 @@ class CouponsController < ApplicationController
   def create
     @coupon = Coupon.new(coupon_params)
     @coupon.owner = current_user
-    @coupon.availibility = true
     if @coupon.save
       redirect_to @coupon
     else
@@ -57,6 +56,6 @@ class CouponsController < ApplicationController
   private
 
   def coupon_params
-    params.require(:coupon).permit(:title, :availibility, :start_time, :end_time, :product_name, :product_description, :code)
+    params.require(:coupon).permit(:title, :availibility, :start_time, :end_time, :product_name, :product_description, :code, :photo)
   end
 end

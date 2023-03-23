@@ -3,7 +3,7 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs" data-controller="user-inputs">
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -15,10 +15,21 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <div data-action= "change->user-inputs#toggleAddress">
+      <%= f.input :role,
+                  collection: ["customer", "bussiness"],
+                  default: "customer"%>
+    </div>
+
+    <div data-user-inputs-target="address">
+      <%= f.input :address,
+                  required: false,
+                  input_html: { autocomplete: "address"}%>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "bttn" %>
   </div>
 <% end %>
 

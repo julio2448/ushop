@@ -6,5 +6,7 @@
   <%= f.input :product_name %>
   <%= f.input :product_description %>
   <%= f.input :code %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit %>
 <% end %>
+ <%= link_to "Cancel", :back, class: "bttn" %>

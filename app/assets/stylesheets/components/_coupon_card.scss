@@ -1,8 +1,9 @@
 .card {
-	width: 200px;
+	width: 155px;
 	transform: rotate(var(--rotation));
 	transition: 0.15s ease-out;
-
+  max-height: 230px;
+  --bs-card-border-color: transparent;
 
 		.card-pin {
 			top: 20px;
@@ -12,7 +13,9 @@
 
 
 	& + & {
-		margin-left: 2rem;
+    margin-left: 15px;
+    margin-bottom: 40px;
+    margin-top: 20px;
 	}
 	&:hover,
 	&:focus-within {
@@ -115,8 +118,8 @@
 	height: 12px;
 	background-color: var(--c-gray-900);
 	position: absolute;
-	top: 20px;
-	left: calc(50% - 6px);
+	top: 15px;
+	left: 110px;
 	border-radius: 50%;
 	box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--c-gray-900);
 	transform: rotate(3deg);

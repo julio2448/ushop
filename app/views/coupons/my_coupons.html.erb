@@ -1,8 +1,16 @@
 <h1> Displaying your current coupons </h1>
 <ul>
-<% @my_coupons.each do |coupon|%>
-<li><%= link_to coupon.title, coupon_path(coupon) %></li>
-<% end %>
+  <div class="row">
+  <% @my_coupons.each do |coupon|%>
+    <% if coupon.available?%>
+      <li class= "col-6"><%= link_to coupon.title, coupon_path(coupon) %></li>
+      <h3 class = "col-6 text-success">You have <%= coupon.time_left%> days to use this coupon </h3>
+    <% else %>
+      <li class= "col-6"><%= link_to coupon.title, coupon_path(coupon) %></li>
+      <h3 class = "col-6 text-danger">This coupon has expired</h3>
+    <%end%>
+  <% end %>
+  <div>
 </ul>
-<h2><%= link_to "New Coupon", new_coupon_path %></h2>
-<h2><%= link_to "Back to all coupons",coupons_path %></h2>
+<h2><%= link_to "New Coupon", new_coupon_path, class: "bttn" %></h2>
+<h2><%= link_to "Back to all coupons",coupons_path , class: "bttn"%></h2>

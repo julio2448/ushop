@@ -22,29 +22,30 @@
 
 
 <nav class="navigation">
-  <a href="#" class="navigation-item active">Featured</a>
+  <a href="#" class="navigation-item active">Near You</a>
   <a href="#" class="navigation-item">My Coupons</a>
 </nav>
+
 <div class="card-container">
-  <section class="coupons">
+  <div class="row row-cols-3">
     <% @coupons.each do |coupon| %>
-    <article class="card">
-      <div class="card-inner">
-        <span class="card-pin"></span>
-        <div class="card-image">
-          <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
-        </div>
-        <div class="card-content">
-          <div class="card-meta">
-            <span class="card-subtitle"><%= coupon.title %></span>
-            <button class="card-meta-button">
-              <i class="ai-circle-triangle-right-fill"></i>
-            </button>
+      <article class="card col">
+        <div class="card-inner">
+
+          <div class="card-image">
+            <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
           </div>
-          <h2 class="card-title"><%= coupon.product_name %></h2>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-subtitle"><%= coupon.title %></span>
+              <button class="card-meta-button">
+                <i class="ai-circle-triangle-right-fill"></i>
+              </button>
+            </div>
+            <h2 class="card-title"><%= coupon.product_name %></h2>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
     <% end %>
-  </section>
+  </div>
 </div>

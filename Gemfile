@@ -44,7 +44,7 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
-
+gem "cloudinary"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -58,6 +58,8 @@ group :development, :test do
   gem "dotenv-rails"
 
 end
+
+gem "rails_admin", "3.0"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
