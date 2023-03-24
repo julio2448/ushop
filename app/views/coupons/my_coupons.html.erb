@@ -3,12 +3,12 @@
   <div class="row">
   <% @my_coupons.each do |coupon|%>
     <% if coupon.available?%>
-      <li class= "col-6"><%= link_to coupon.title, coupon_path(coupon) %></li>
-      <h3 class = "col-6 text-success">You have <%= coupon.time_left%> days to use this coupon </h3>
+      <li class= "col-6 "><%= link_to coupon.title, coupon_path(coupon) %></li>
+      <h3 class = "col-6 text-success"><%= coupon.time_left_days%> Days For Your Coupon to Expire</h3>
     <% else %>
       <li class= "col-6"><%= link_to coupon.title, coupon_path(coupon) %></li>
       <h3 class = "col-6 text-danger">This coupon has expired</h3>
-    <%end%>
+      <%end%>
   <% end %>
   <div>
 </ul>

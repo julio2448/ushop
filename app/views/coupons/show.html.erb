@@ -9,11 +9,21 @@
         <div class="card-meta-show">
           <span class="card-meta-number-show">
             <ul style="list-style: none; justify-content: center; font-size: 15px;">
+            <% if @coupon.photo.key %>
+              <%= cl_image_tag @coupon.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else%>
+              <%= image_tag 'https://res.cloudinary.com/dkkxkbhih/image/upload/v1678911558/No-Image-Placeholder.svg_tmw0tt.png', height: 200, width: 200, crop: :fill %>
+            <% end %>
               <li><strong><%= @coupon.product_name %></strong></li>
               <li><%= @coupon.owner.email %></li>
               <li><%= @coupon.start_time %></li>
               <li><%= @coupon.end_time %></li>
               <li><%= @coupon.product_description %></li>
+              <li><%= content_tag(:h3,"",data: {
+                controller: "countdown",
+                countdown_target: "countdown",
+                seconds_left_value: @coupon.time_left_seconds
+                })%></li>
             </ul>
           </span>
         </div>
@@ -24,21 +34,18 @@
 
   <div class="button-container" style="margin-top: 200px; justify-content: center;">
     <% if user_signed_in? %>
-      <% if current_user.id == @coupon.owner.id%>
+      <% if current_user == @coupon.owner%>
         <h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
         <h2><%= link_to "Edit Coupon?", edit_coupon_path(@coupon), class: "bttn" %></h2>
+      <% else %>
+        <h2><%= link_to "Add this Coupon?", create_bookmark_path(@coupon.id), data: {turbo_method: :post}, class: "bttn"%></h2>
       <% end %>
+
       <h2><%= link_to "Back to all Coupons", coupons_path, class: "bttn" %></h2>
         <% if current_user.coupon_taken?(@coupon) %>
             <h2>You already own this coupon</h2>
         <% else %>
-            <h2><%= link_to "Add this Coupon?", create_bookmark_path(@coupon.id), data: {turbo_method: :post}, class: "bttn"%></h2>
       <%end%>
     <%end%>
-    <% if @coupon.available? %>
-      <h2><strong>This Coupon is available! </strong></h2>
-    <% else %>
-      <h2><strong>This Coupon is no longer available</strong></h2>
-    <% end %>
   </div>
 </div>
