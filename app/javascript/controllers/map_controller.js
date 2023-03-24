@@ -9,10 +9,12 @@ export default class extends Controller {
   }
 
   connect() {
+
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      new mapboxgl.Marker({color: "#fa002a"})
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
@@ -31,7 +33,6 @@ export default class extends Controller {
     if (this.imgmapTarget.classList.contains("d-none")){
       e.target.style.color = "#2ab3c0"
       this.imgmapTarget.classList.remove("d-none")
-      console.log(typeof(this.apiKeyValue))
       mapboxgl.accessToken = this.apiKeyValue
 
       this.map = new mapboxgl.Map({
@@ -41,7 +42,8 @@ export default class extends Controller {
       this.#addMarkersToMap()
       this.#fitMapToMarkers()
       this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-          mapboxgl: mapboxgl }))
+          mapboxgl: mapboxgl }),"top-left")
+
     } else {
       e.target.style.color = "#787878"
       this.imgmapTarget.classList.add("d-none")
