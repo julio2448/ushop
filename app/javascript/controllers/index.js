@@ -4,8 +4,17 @@
 
 import { application } from "./application"
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
+import CountdownController from "./countdown_controller"
+application.register("countdown", CountdownController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
 
 import UserInputsController from "./user_inputs_controller"
 application.register("user-inputs", UserInputsController)
