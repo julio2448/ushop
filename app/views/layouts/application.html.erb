@@ -35,14 +35,16 @@
           </button>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content text-center"> <!-- Added text-center class -->
+              <div class="modal-content text-center">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Signup or Login</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <button type="button" class="bttn"><%= link_to "Login", new_user_session_path  %></button>
-                  <button type="button" class="bttn"><%= link_to "Sign-up", new_user_registration_path  %></button>
+                  <div class="button-container">
+                    <button type="button" class="bttn"><%= link_to "Login", new_user_session_path  %></button>
+                    <button type="button" class="bttn"><%= link_to "Sign-up", new_user_registration_path  %></button>
+                  </div>
                   <hr>
                   <p style="font-size: small; margin-top: 10px;">or register as a business</p>
                 </div>
@@ -52,7 +54,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </header>
 

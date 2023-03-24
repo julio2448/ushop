@@ -1,5 +1,5 @@
 <div class="container" style="justify-content: center; line-height: 2.5;">
-  <h1>Displaying information about <%= @coupon.title %></h1>
+  <h1> Coupon info:</h1>
    <article class="card-show">
     <div class="card-inner-show">
       <div class="card-image-show">
@@ -32,7 +32,7 @@
     </div>
   </article>
 
-  <div class="button-container" style="margin-top: 200px; justify-content: center;">
+  <div class="button-container" style="margin-top: 290px; justify-content: center; text-align: center;">
     <% if user_signed_in? %>
       <% if current_user == @coupon.owner%>
         <h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
@@ -44,8 +44,10 @@
       <h2><%= link_to "Back to all Coupons", coupons_path, class: "bttn" %></h2>
         <% if current_user.coupon_taken?(@coupon) %>
             <h2>You already own this coupon</h2>
-        <% else %>
-      <%end%>
+        <%end%>
     <%end%>
   </div>
 </div>
+
+<h2><%=link_to "Sign out",destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %><h2>
+<%=link_to "Sign out",destroy_user_session_path %>
