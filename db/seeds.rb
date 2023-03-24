@@ -1,20 +1,8 @@
 puts "Creating 10 users"
 10.times do |n|
-  User.create(email: "user#{n}@gmail.com", password: "123456", role: ["business", "customer"].sample)
+  User.create(email: "user#{n}@gmail.com", password: "123456", role: ["business", "customer"].sample, address: Faker::Address.full_address)
 end
 puts "10 Users created"
-
-# users = User.all
-# customers = []
-# owners = []
-
-# users.each do |user|
-#   if user.customer?
-#     customers << user
-#   else
-#     owners << user
-#   end
-# end
 
 puts "Creating 20 coupons"
 20.times do
@@ -25,11 +13,11 @@ puts "Creating 20 coupons"
     product_name: Faker::Job.title,
     product_description: Faker::Job.title,
     code: Faker::Code.nric,
-    owner: User.owners.sample
+    owner: User.owners.sample,
+    address: Faker::Address.full_address
   )
 end
 puts "20 Coupons created"
-
 
 puts "Creating 30 bookmarks"
 30.times do
