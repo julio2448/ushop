@@ -42,8 +42,9 @@
                 </div>
                 <div class="modal-body">
                   <div class="button-container">
-                    <button type="button" class="bttn"><%= link_to "Login", new_user_session_path  %></button>
-                    <button type="button" class="bttn"><%= link_to "Sign-up", new_user_registration_path  %></button>
+                    <%= link_to "Login", new_user_session_path, class: "bttn" %>
+                    <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
+                    <%=link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
                   </div>
                   <hr>
                   <p style="font-size: small; margin-top: 10px;">or register as a business</p>

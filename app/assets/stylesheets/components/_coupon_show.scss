@@ -1,5 +1,5 @@
 .card-show {
-	width: 300px;
+	width: 100%;
 	transition: 0.15s ease-out;
   max-height: 330px;
   --bs-card-border-color: transparent;
@@ -34,6 +34,7 @@
 	&.horizontal {
 		width: 100%;
 		transform: rotate(3deg);
+    height: 20%;
 		.card-inner {
 			flex-direction: row;
 			align-items: center;

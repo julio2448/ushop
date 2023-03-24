@@ -3,42 +3,42 @@
    <article class="card-show">
     <div class="card-inner-show">
       <div class="card-image-show">
-        <img src="https://assets.codepen.io/285131/illustration-hand-with-cigarette-icon.jpg" />
+        <% if @coupon.photo.key %>
+          <%= cl_image_tag @coupon.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else%>
+          <%= image_tag 'https://res.cloudinary.com/dkkxkbhih/image/upload/v1678911558/No-Image-Placeholder.svg_tmw0tt.png', height: 200, width: 200, crop: :fill %>
+        <% end %>
       </div>
       <div class="card-content-show">
         <div class="card-meta-show">
           <span class="card-meta-number-show">
             <ul style="list-style: none; justify-content: center; font-size: 15px;">
-            <% if @coupon.photo.key %>
-              <%= cl_image_tag @coupon.photo.key, height: 300, width: 400, crop: :fill %>
-            <% else%>
-              <%= image_tag 'https://res.cloudinary.com/dkkxkbhih/image/upload/v1678911558/No-Image-Placeholder.svg_tmw0tt.png', height: 200, width: 200, crop: :fill %>
-            <% end %>
               <li><strong><%= @coupon.product_name %></strong></li>
               <li><%= @coupon.owner.email %></li>
-              <li><%= @coupon.start_time %></li>
-              <li><%= @coupon.end_time %></li>
+              <li>From: <%= @coupon.start_time %></li>
+              <li>To: <%= @coupon.end_time %></li>
               <li><%= @coupon.product_description %></li>
               <li><%= content_tag(:h3,"",data: {
                 controller: "countdown",
                 countdown_target: "countdown",
                 seconds_left_value: @coupon.time_left_seconds
-                })%></li>
+                }
+                  )%></li>
             </ul>
           </span>
         </div>
-        <strong class="coupon-code" style="font-size: 30px;"><%= @coupon.code %></strong>
+        <strong class="coupon-code" style="font-size: 30px;">CODE:<%= @coupon.code %></strong>
       </div>
     </div>
   </article>
 
-  <div class="button-container" style="margin-top: 290px; justify-content: center; text-align: center;">
+  <div class="button-container" style="margin-top: 320px; justify-content: center; text-align: center;">
     <% if user_signed_in? %>
       <% if current_user == @coupon.owner%>
-        <h2><%= link_to "Delete Coupon?", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
-        <h2><%= link_to "Edit Coupon?", edit_coupon_path(@coupon), class: "bttn" %></h2>
+        <h2><%= link_to "Delete Coupon", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
+        <h2><%= link_to "Edit Coupon", edit_coupon_path(@coupon), class: "bttn" %></h2>
       <% else %>
-        <h2><%= link_to "Add this Coupon?", create_bookmark_path(@coupon.id), data: {turbo_method: :post}, class: "bttn"%></h2>
+        <h2><%= link_to "Add this Coupon", create_bookmark_path(@coupon.id), data: {turbo_method: :post}, class: "bttn"%></h2>
       <% end %>
 
       <h2><%= link_to "Back to all Coupons", coupons_path, class: "bttn" %></h2>
@@ -48,6 +48,3 @@
     <%end%>
   </div>
 </div>
-
-<h2><%=link_to "Sign out",destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %><h2>
-<%=link_to "Sign out",destroy_user_session_path %>

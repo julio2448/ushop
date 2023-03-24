@@ -5,19 +5,14 @@
 <section class="search" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   <div class="search-inner" style="margin-bottom: 30px">
-
-
-    <a href="/coupons" class="search-button">
+    <a href="#" class="search-button">
       <i class="ai-search"></i>
     </a>
     <input type="text" class="search-input" placeholder="Search for products" />
 
     <button id="globe-button" class="btn secondary btn-lg globe" aria-label="Globe" data-action="click->map#toggleMap">
-        <i class="fas fa-globe fa-fw" ></i>
+      <i class="fas fa-globe fa-fw" ></i>
     </button>
-
-
-
   </div>
   <div
     class="d-none"
@@ -28,20 +23,16 @@
   </div>
 </section>
 
-
-
-
 <nav class="navigation">
   <a href="#" class="navigation-item active">Near You</a>
-  <a href="#" class="navigation-item">My Coupons</a>
+  <%= link_to "My Coupons", my_bookmarks_path, class: "navigation-item" %>
 </nav>
 
 <div class="card-container">
   <div class="row row-cols-3">
     <% @coupons.each do |coupon| %>
-      <article class="card col">
+     <%= link_to coupon_path(coupon), class: "card col text-decoration-none text-black" do %>
         <div class="card-inner">
-
           <div class="card-image">
             <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
           </div>
@@ -55,9 +46,7 @@
             <h2 class="card-title"><%= coupon.product_name %></h2>
           </div>
         </div>
-      </article>
+      <% end %>
     <% end %>
   </div>
 </div>
-
-<%=link_to coupons_path %>

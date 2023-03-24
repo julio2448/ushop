@@ -1,10 +1,27 @@
-<h1> Displaying your current bookmarks </h1>
-<ul>
-<% @my_bookmarks.each do |bookmark|%>
-  <% if bookmark.coupon.available? %>
-  <li><%= link_to bookmark.coupon.title, coupon_path(bookmark.coupon) %></li>
-  <h6>EXPIRATION DATE : <%= bookmark.coupon.end_time%></h6>
-  <% end %>
-<% end %>
-</ul>
-<h2><%= link_to "All coupons",coupons_path, class: "bttn" %></h2>
+<div class="bookmark-container" style = "margin-top: 50px;">
+  <h1><strong>Your saved coupons</strong></h1>
+    <% @my_bookmarks.each do |bookmark|%>
+      <% if bookmark.coupon.available? %>
+        <%= link_to coupon_path(bookmark.coupon), class: "card horizontal text-decoration-none text-black" do %>
+          <div class="card-inner">
+            <span class="card-pin simple"></span>
+            <div class="card-image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhuhT25qh-R8z7YkEi6NcGtKWJsgv7Xt-_uWJKWz1yeLc7KmK8bo5zQLO1HAlsWx98ME0&usqp=CAU" />
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-meta-artist"><%= bookmark.coupon.title %></span>
+              </div>
+              <h2 class="card-title">EXPIRATION DATE:
+                <span class="card-time"><%= bookmark.coupon.end_time%></span>
+              </h2>
+            </div>
+            <span class="card-pin simple"></span>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+</div>
+<div class="button-container">
+  <%= link_to "All coupons",coupons_path, class: "bttn" %>
+</div>
