@@ -10,7 +10,19 @@ class Coupon < ApplicationRecord
     Date.today < end_time
   end
 
-  def time_left
+  def time_left_days
     (end_time - Date.today).to_i
+  end
+
+  def time_left_hours
+    ((end_time - Date.today) * 24).to_i
+  end
+
+  def time_left_seconds
+    ((end_time - Date.today) * 24 * 60 * 60).to_i
+  end
+
+  def time_left_minutes
+    ((end_time - Date.today) * 24 * 60).to_i
   end
 end
