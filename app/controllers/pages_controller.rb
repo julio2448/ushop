@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @coupons = Coupon.all.sample(2)
+    @coupons = Coupon.all
     @users = User.all
     @markers = @users.geocoded.map do |user|
       {
