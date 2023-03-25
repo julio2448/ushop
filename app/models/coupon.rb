@@ -1,3 +1,4 @@
+include PgSearch::Model
 class Coupon < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :bookmarks, dependent: :destroy
@@ -5,6 +6,14 @@ class Coupon < ApplicationRecord
   validates_comparison_of :end_time, greater_than_or_equal_to: :start_time
   validates_comparison_of :start_time, greater_than_or_equal_to: Date.today
   has_one_attached :photo
+  pg_search_scope :search_coupon,
+      against: %i[title end_time product_name product_description],
+      associated_against: {
+        owner: %i[email]
+      },
+      using: {
+        tsearch: { prefix: true }
+      }
 
   def available?
     Date.today < end_time

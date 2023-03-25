@@ -16,5 +16,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import SearchCouponsController from "./search_coupons_controller"
+application.register("search-coupons", SearchCouponsController)
+
 import UserInputsController from "./user_inputs_controller"
 application.register("user-inputs", UserInputsController)
