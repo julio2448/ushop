@@ -30,7 +30,7 @@
 
   <nav class="navigation" style="margin-bottom: 30;">
     <a href="#" class="navigation-item active">Near You</a>
-    <a href="#" class="navigation-item">My Coupons</a>
+    <%= link_to "My Coupons",my_bookmarks_path, class: "navigation-item"%>
   </nav>
 
   <%= turbo_frame_tag "coupon_cards", class: "card-container" do %>
