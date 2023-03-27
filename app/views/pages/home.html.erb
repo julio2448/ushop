@@ -28,8 +28,9 @@
     </div>
   </section>
 
-  <% if user_signed_in? %>
-  <nav class="navigation" style="margin-bottom: 30;">
+
+  <%if user_signed_in? %>
+  <nav class="navigation" style= "margin-bottom: 30;">
     <a href="#" class="navigation-item active">Near You</a>
         <% if current_user.owner? %>
           <%= link_to "My Coupons Posted",my_coupons_path, class: "navigation-item"%>
