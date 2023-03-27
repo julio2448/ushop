@@ -41,7 +41,7 @@
         <h2><%= link_to "Add this Coupon", create_bookmark_path(@coupon.id), data: {turbo_method: :post}, class: "bttn"%></h2>
       <% end %>
 
-      <h2><%= link_to "Back to all Coupons", coupons_path, class: "bttn" %></h2>
+      <h2><%= link_to "Back to all Coupons", root_path, class: "bttn" %></h2>
         <% if current_user.coupon_taken?(@coupon) %>
             <h2>You already own this coupon</h2>
         <%end%>
