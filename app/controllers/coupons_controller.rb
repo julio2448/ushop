@@ -7,6 +7,9 @@ class CouponsController < ApplicationController
 
   def show
     @coupon = Coupon.find(params[:id])
+    turbo_stream_response do |turbo_stream|
+      turbo_stream.replace @coupon.id.to_s, partial: "coupons/show", locals: { coupon: @coupon }
+    end
   end
 
   def edit

@@ -19,9 +19,8 @@ class PagesController < ApplicationController
       }
     end
 
-    respond_to do |format|
-      format.html
-      format.text { render partial: "pages/turbo_frames/coupon_cards", locals: { coupons: @coupons }, formats: [:html] }
+    if params[:coupon_id].present?
+      render turbo_stream: turbo_stream.update("coupon_cards", partial: "coupons/turbo_frames/coupon", locals: { coupon: Coupon.find(params[:coupon_id]) })
     end
   end
 
