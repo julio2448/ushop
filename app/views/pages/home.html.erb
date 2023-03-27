@@ -28,10 +28,16 @@
     </div>
   </section>
 
+  <%if user_signed_in? %>
   <nav class="navigation" style= "margin-bottom: 30;">
     <a href="#" class="navigation-item active">Near You</a>
-    <%= link_to "My Coupons",my_bookmarks_path, class: "navigation-item"%>
+        <% if current_user.owner? %>
+          <%= link_to "My Coupons Posted",my_coupons_path, class: "navigation-item"%>
+         <% else %>
+      <%= link_to "My Coupons",my_bookmarks_path, class: "navigation-item"%>
+      <% end %>
   </nav>
+  <% end %>
 
   <%= turbo_frame_tag "coupon_cards", class: "card-container" do %>
     <%= render "pages/turbo_frames/coupon_cards", coupons: @coupons %>
