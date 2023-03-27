@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     if params[:query].present?
       @coupons = Coupon.search_coupon(params[:query])
-      render turbo_stream: turbo_stream.update("coupon_cards", partial: "pages/turbo_frames/coupon_cards", locals: { coupons: @coupons })
+      # render turbo_stream: turbo_stream.update("coupon_cards", partial: "pages/turbo_frames/coupon_cards", locals: { coupons: @coupons })
     else
       @coupons = Coupon.all
     end
@@ -19,8 +19,9 @@ class PagesController < ApplicationController
       }
     end
 
-    if params[:coupon_id].present?
-      render turbo_stream: turbo_stream.update("coupon_cards", partial: "coupons/turbo_frames/coupon", locals: { coupon: Coupon.find(params[:coupon_id]) })
+    respond_to do |format|
+      format.html
+      format.text { render partial: "pages/turbo_frames/coupon_cards", locals: { coupons: @coupons }, formats: [:html] }
     end
   end
 

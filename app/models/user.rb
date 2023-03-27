@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def customer?
     role == "customer"
   end
+
+  def owner?
+    role == "business"
+  end
 end
