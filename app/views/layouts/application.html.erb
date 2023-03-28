@@ -37,19 +37,22 @@
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content text-center">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Signup or Login</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="modal-header">
+                <% if user_signed_in? %>
+                  <div class ="button-container">
+                    <%=link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %>
+                    <p style="font-size: small; margin-top: 10px;">Upgrade to Business</p>
+                  </div>
+                <% else %>
                 </div>
-                <div class="modal-body">
                   <div class="button-container">
+                    <h5 class="modal-title" id="exampleModalLabel">Signup or Login</h5>
                     <%= link_to "Login", new_user_session_path, class: "bttn" %>
                     <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
-                    <%=link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-                  </div>
+                    <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
                   <hr>
-                  <p style="font-size: small; margin-top: 10px;">or register as a business</p>
                 </div>
+                <% end %>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>

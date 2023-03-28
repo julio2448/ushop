@@ -44,3 +44,11 @@
     <%= render "pages/turbo_frames/coupon_cards", coupons: @coupons %>
   <% end %>
 </div>
+
+<div>
+<% if user_signed_in?%>
+  <% if current_user.owner?%>
+  <h2><%= link_to "CREATE COUPON", new_coupon_path, class: "bttn" %></h2>
+  <% end %>
+<% end %>
+</div>
