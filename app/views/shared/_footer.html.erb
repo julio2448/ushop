@@ -3,8 +3,16 @@
     <%= link_to root_path, class: "menu-item active" do %>
       <i class="fa-solid fa-house"></i>
     <% end %>
+    <% if user_signed_in?%>
+      <% if current_user.customer?%>
     <%= link_to my_bookmarks_path, class: "menu-item active" do %>
       <i class="fa-solid fa-cart-shopping"></i>
+        <% end %>
+      <% else %>
+        <%= link_to my_coupons_path, class: "menu-item active" do %>
+          <i class="fa-solid fa-ticket"></i>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </footer>

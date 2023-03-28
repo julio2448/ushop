@@ -19,8 +19,10 @@ class BookmarksController < ApplicationController
   end
 
   def create
+    p "hola from create"
     @bookmark = Bookmark.new(coupon_id: @coupon.id, client_id: current_user.id)
-    @bookmark.save
+    @bookmark.save!
+
     redirect_to my_bookmarks_path
   end
 
