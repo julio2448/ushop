@@ -5,11 +5,9 @@ class Users::SessionsController < Devise::SessionsController
 
   def new
     if params[:coupon_id].present?
-      store_location_for(:user, root_path(coupon_id: params[:coupon_id]))
-      super
-    else
-      super
+      store_location_for(:user, params[:coupon_id])
     end
+    super
   end
 
   # POST /resource/sign_in

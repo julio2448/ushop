@@ -9,14 +9,14 @@ class PagesController < ApplicationController
       @coupons = Coupon.all
     end
 
-    @users = User.all
-    @markers = @users.geocoded.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        # info_window_html: render_to_string(partial: "pages/marker", locals: { user: user }),
-        # marker_html: render_to_string(partial: "marker", locals: { user: user })
-      }
+    if current_user
+      @markers =
+        {
+          lat: current_user.latitude,
+          lng: current_user.longitude,
+          info_window_html: render_to_string(partial: "pages/marker", locals: { user: current_user}, formats: [:html]),
+          marker_html: render_to_string(partial: "pages/marker", locals: { user: current_user}, formats: [:html])
+        }
     end
 
 

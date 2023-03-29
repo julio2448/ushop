@@ -11,13 +11,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:role, :address])
 
     devise_parameter_sanitizer.permit(:sign_in, keys:[:coupon_id])
-
   end
 
-
   def after_sign_in_path_for(resource)
-
-    stored_location_for(resource) ||
-    root_path
+    store_location = stored_location_for(resource)
+    if store_location!=nil
+      coupon_path(store_location)
+    else
+      root_path
+    end
   end
 end

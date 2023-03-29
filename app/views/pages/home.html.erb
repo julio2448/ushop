@@ -3,11 +3,11 @@
   <p>Search for coupons perfect for saving money</p>
 </section>
 
-<div data-controller="search-coupons">
+<div data-controller="search-coupons" style="margin-bottom: 50px;">
   <section class="search" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     <div class="search-inner" style="margin-bottom: 30px">
-      <a href="/coupons" class="search-button">
+      <a href="" class="search-button">
         <i class="ai-search"></i>
       </a>
         <%= form_with url: root_path, method: :get, html: {class:
@@ -20,9 +20,10 @@
         action: "keyup->search-coupons#update"} %>
         <% end %>
 
-      <button id="globe-button" class="btn secondary btn-lg globe" aria-label="Globe" data-action="click->map#toggleMap">
-          <i class="fas fa-globe fa-fw" ></i>
-      </button>
+<button id="globe-button" class="btn secondary btn-lg globe-americas" aria-label="globe-americas" data-action="click->map#toggleMap" style="border: none;">
+  <i class="fas fa-globe-americas fa-fw" style="font-size: 2em;"></i>
+</button>
+
     </div>
     <div class="d-none" style="width: 100%; height: 600px; " data-map-target="imgmap">
     </div>
@@ -43,12 +44,11 @@
   <%= turbo_frame_tag "coupon_cards", class: "card-container" do %>
     <%= render "pages/turbo_frames/coupon_cards", coupons: @coupons %>
   <% end %>
-</div>
-
-<div>
-<% if user_signed_in?%>
-  <% if current_user.owner?%>
-  <h2><%= link_to "CREATE COUPON", new_coupon_path, class: "bttn" %></h2>
+  <div class="button-container" style="margin-left: 35px; margin-bottom: 65px;">
+  <% if user_signed_in?%>
+    <% if current_user.owner?%>
+    <h2><%= link_to "CREATE COUPON", new_coupon_path, class: "bttn" %></h2>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
 </div>

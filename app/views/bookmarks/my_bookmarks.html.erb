@@ -18,6 +18,7 @@
                 </h2>
               </div>
               <span class="card-pin simple"></span>
+              <h2><%= link_to "Delete Coupon", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
             </div>
           <% end %>
         <% end %>

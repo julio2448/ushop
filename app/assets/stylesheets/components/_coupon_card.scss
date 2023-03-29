@@ -2,7 +2,10 @@
 	width: 155px;
 	transform: rotate(var(--rotation));
 	transition: 0.15s ease-out;
-  max-height: 230px;
+  max-height: 240px;
+  margin-left: 15px;
+  margin-bottom: 40px;
+  margin-top: 20px;
   --bs-card-border-color: transparent;
 
 		.card-pin {
@@ -39,6 +42,7 @@
     margin-top: 40px;
     margin-bottom: 40px;
     height: 17%;
+    margin-left: 15px;
 		.card-inner {
 			flex-direction: row;
 			align-items: center;
