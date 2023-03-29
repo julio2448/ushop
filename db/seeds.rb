@@ -29,3 +29,5 @@ puts "Creating 30 bookmarks"
   )
 end
 puts "20 boomarks created"
+puts " 5 real busiensses"
+Coupon.create()
