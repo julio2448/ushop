@@ -2,6 +2,8 @@ puts "Creating 10 users"
 10.times do |n|
   User.create(email: "user#{n}@gmail.com", password: "123456", role: ["business", "customer"].sample, address: Faker::Address.full_address)
 end
+
+
 puts "10 Users created"
 
 puts "Creating 20 coupons"
