@@ -1,16 +1,30 @@
-<h1> Displaying your current coupons </h1>
-<ul>
-  <div class="row">
-  <% @my_coupons.each do |coupon|%>
-    <% if coupon.available?%>
-      <li class= "col-6 "><%= link_to coupon.title, coupon_path(coupon) %></li>
-      <h3 class = "col-6 text-success"><%= coupon.time_left_days%> Days For Your Coupon to Expire</h3>
-    <% else %>
-      <li class= "col-6"><%= link_to coupon.title, coupon_path(coupon) %></li>
-      <h3 class = "col-6 text-danger">This coupon has expired</h3>
+<h1>Your posted Coupons:</h1>
+  <section class="posted-coupons" style="margin-bottom: 60px; margin-top: 70px;">
+    <% @my_coupons.each do |coupon|%>
+      <%= link_to coupon_path(coupon), class: "card horizontal text-decoration-none text-black" do %>
+        <div class="card-inner">
+          <div class="card-image">
+            <img src="https://previews.123rf.com/images/arbuzu/arbuzu1411/arbuzu141100095/33639605-letra-u-logo-icono-elementos-de-plantilla-de-dise%C3%B1o.jpg" />
+          </div>
+          <div class="card-content">
+            <% if coupon.available?%>
+              <div class="card-meta">
+                <span class="card-meta-artist"><%= coupon.title %></span>
+              </div>
+              <h2 class="card-title">
+                <span class="card-time"><%= coupon.time_left_days%> Days For Your Coupon to Expire</span>
+              </h2>
+            <% else %>
+              <h3 class= "col-6"><%= coupon.title %></h3>
+              <h3 class = "col-6 text-danger">This coupon has expired</h3>
+            <%end%>
+          </div>
+        </div>
       <%end%>
-  <% end %>
-  <div>
-</ul>
-<h2><%= link_to "New Coupon", new_coupon_path, class: "bttn" %></h2>
-<h2><%= link_to "Back to all coupons",root_path , class: "bttn"%></h2>
+    <% end %>
+  </section>
+
+  <div class="button-container" style="margin-top: 100px; margin-bottom: 100px; margin-left: 35px; padding: 5px;">
+    <%= link_to "New Coupon", new_coupon_path, class: "bttn" %>
+    <%= link_to "Back to all coupons",root_path , class: "bttn"%>
+  </div>

@@ -3,7 +3,7 @@
   <p>Search for coupons perfect for saving money</p>
 </section>
 
-<div data-controller="search-coupons">
+<div data-controller="search-coupons" style="margin-bottom: 50px;">
   <section class="search" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     <div class="search-inner" style="margin-bottom: 30px">
@@ -43,12 +43,11 @@
   <%= turbo_frame_tag "coupon_cards", class: "card-container" do %>
     <%= render "pages/turbo_frames/coupon_cards", coupons: @coupons %>
   <% end %>
-</div>
-
-<div>
-<% if user_signed_in?%>
-  <% if current_user.owner?%>
-  <h2><%= link_to "CREATE COUPON", new_coupon_path, class: "bttn" %></h2>
+  <div class="button-container" style="margin-left: 35px; margin-bottom: 65px;">
+  <% if user_signed_in?%>
+    <% if current_user.owner?%>
+    <h2><%= link_to "CREATE COUPON", new_coupon_path, class: "bttn" %></h2>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
 </div>

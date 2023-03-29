@@ -1,3 +1,7 @@
 .modal-backdrop {
   --bs-backdrop-zindex: 0 !important;
 }
+
+.modal-footer {
+  display: inline;
+}
