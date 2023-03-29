@@ -37,7 +37,7 @@
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content text-center">
-              <div class="modal-header">
+              <div class="modal-header">Signup or Login
                 <% if user_signed_in? %>
                   <div class ="button-container" style="margin-left: 50px;">
                     <%=link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %>
@@ -46,16 +46,16 @@
                 <% else %>
                   </div>
                     <div class="button-container">
-                      <h5 class="modal-title" id="exampleModalLabel">Signup or Login</h5>
+                      <h5 class="modal-title" id="exampleModalLabel"></h5>
                       <%= link_to "Login", new_user_session_path, class: "bttn" %>
                       <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
                       <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
                     <hr>
+                    <button type="button" class="btn btn-secondary" style="margin-bottom: 15px;" data-bs-dismiss="modal">Close</button>
                   </div>
                 <% end %>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
