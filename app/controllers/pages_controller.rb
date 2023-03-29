@@ -14,8 +14,8 @@ class PagesController < ApplicationController
         {
           lat: current_user.latitude,
           lng: current_user.longitude,
-          info_window_html: render_to_string(partial: "pages/marker", locals: { user: current_user }),
-          marker_html: render_to_string(partial: "marker", locals: { user: current_user })
+          info_window_html: render_to_string(partial: "pages/marker", locals: { user: current_user }, formats: [:html]),
+          marker_html: render_to_string(partial: "pages/marker", locals: { user: current_user }, formats: [:html])
         }
     end
 
