@@ -1,14 +1,15 @@
-.card {
+.card-bookmark {
 	width: 155px;
 	transform: rotate(var(--rotation));
 	transition: 0.15s ease-out;
-  max-height: 240px;
+  max-height: 145px;
   margin-left: 15px;
   margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 60px;
+  display: flex;
   --bs-card-border-color: transparent;
 
-		.card-pin {
+		.card-pin-boomark {
 			top: 20px;
 			left: 20px;
 			transform: rotate(-5deg);
@@ -24,14 +25,14 @@
 	&:focus-within {
 		transform: translateY(4px) rotate(var(--rotation));
 
-		.card-inner {
+		.card-inner-bookmark {
 			background-color: var(--c-gray-100);
 		}
-		.card-pin:after {
+		.card-pin-bookmark:after {
 			height: 54px;
 		}
 
-		.card-pin:before {
+		.card-pin-bookmark:before {
 			transform: translatey(-4px);
 		}
 	}
@@ -39,11 +40,11 @@
 	&.horizontal {
 		width: 90%;
 		transform: rotate(3deg);
-    margin-top: 40px;
+    margin-top: 60px;
     margin-bottom: 40px;
     height: 17%;
-    margin-left: 15px;
-		.card-inner {
+    margin-left: 10px;
+		.card-inner-bookmark {
 			flex-direction: row;
 			align-items: center;
 			padding: 1rem;
@@ -52,23 +53,24 @@
 			}
 		}
 
-		.card-image {
+		.card-image-bookmark {
 			width: 60px;
 			height: 60px;
 			flex-shrink: 0;
 		}
 
-		.card-content {
+		.card-content-bookmark {
 			width: 90%;
 			margin-top: 0;
 			margin-left: 0.5rem;
 		}
 
-		.card-meta-artist {
+		.card-meta-artist-bookmark {
 			font-weight: 700;
+      font-size: 20px;
 		}
 
-		.card-title {
+		.card-title-bookmark {
 			font-weight: 500;
 			color: var(--c-gray-500);
 			font-size: 1.125em;
@@ -79,7 +81,7 @@
 			justify-content: space-between;
 		}
 
-		.card-time {
+		.card-time-bookmark {
 			font-weight: 600;
 		}
 
@@ -97,7 +99,7 @@
 	}
 }
 
-.card-inner {
+.card-inner-bookmark {
 	display: flex;
 	flex-direction: column;
 	border: 2px solid var(--c-gray-900);
@@ -120,7 +122,7 @@
 	}
 }
 
-.card-pin {
+.card-pin-bookmark {
 	width: 12px;
 	height: 12px;
 	background-color: var(--c-gray-900);
@@ -175,7 +177,7 @@
 	}
 }
 
-.card-image {
+.card-image-bookmark {
 	border-radius: 15px;
 	overflow: hidden;
 	aspect-ratio: 4 / 3;
@@ -189,26 +191,26 @@
 	}
 }
 
-.card-meta,
-.card-title {
+.card-meta-bookmark,
+.card-title-bookmark {
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 }
 
-.card-meta {
+.card-meta-bookmark {
 	padding-top: 0.75rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.card-meta-number {
+.card-meta-number-bookmark {
 	color: var(--c-gray-500);
 	font-size: 0.875rem;
 	font-weight: 500;
 }
 
-.card-meta-button {
+.card-meta-button-bookmark {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -234,7 +236,7 @@
 	}
 }
 
-.card-title {
+.card-title-bookmark {
 	margin-top: 0.25rem;
 	font-size: 1rem;
 	font-weight: 600;
