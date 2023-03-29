@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+    }
   root to: "pages#home"
   get "/coupons/my_coupons", to: "coupons#my_coupons", as: :my_coupons
   get "/coupons/my_bookmarks", to: "bookmarks#my_bookmarks", as: :my_bookmarks

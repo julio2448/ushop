@@ -301,7 +301,7 @@ DEPENDENCIES
   cloudinary
   countdown-rails
   debug
-  devise
+  devise (~> 4.7)
   dotenv-rails
   faker
   font-awesome-sass (~> 6.1)
