@@ -14,25 +14,23 @@ class PagesController < ApplicationController
         {
           lat: current_user.latitude,
           lng: current_user.longitude,
-          info_window_html: render_to_string(partial: "pages/marker", locals: { user: current_user }),
-          marker_html: render_to_string(partial: "marker", locals: { user: current_user })
+          info_window_html: render_to_string(partial: "pages/marker", locals: { user: current_user}, formats: [:html]),
+          marker_html: render_to_string(partial: "pages/marker", locals: { user: current_user}, formats: [:html])
         }
     end
 
 
     if params[:coupon_id].present?
       puts "hola #{params[:coupon_id]}"
-      render turbo_stream: turbo_stream.update("coupon_cards", partial: "coupons/turbo_frames/coupon", locals: { coupon: Coupon.find(params[:coupon_id]) })
+      render turbo_stream: turbo_stream.update("coupon_cards", partial: "coupons/turbo_frames/coupon", locals: { coupon: Coupon.find(params[:coupon_id]) }, formats: [:html])
     else
       respond_to do |format|
         format.html
         format.text { render partial: "pages/turbo_frames/coupon_cards", locals: { coupons: @coupons }, formats: [:html] }
       end
     end
-
-
   end
 
-  def index;
+  def index
   end
 end

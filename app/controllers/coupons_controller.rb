@@ -50,12 +50,12 @@ class CouponsController < ApplicationController
   def destroy
     @coupon = Coupon.find(params[:id])
     @coupon.destroy
-    redirect_to coupons_path
+    redirect_to root_path
   end
 
   private
 
   def coupon_params
-    params.require(:coupon).permit(:title, :availibility, :start_time, :end_time, :product_name, :product_description, :code, :photo)
+    params.require(:coupon).permit(:title, :availibility, :start_time, :end_time, :product_name, :product_description, :code, :photo, :address)
   end
 end
