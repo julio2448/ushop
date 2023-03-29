@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/supermarket.json?proximity=${this.markersValue.lng},${this.markersValue.lat}&access_token=${this.apiKeyValue}`)
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/supermarket.json&groceries.json?proximity=${this.markersValue.lng},${this.markersValue.lat}&access_token=${this.apiKeyValue}&limit=10`)
     .then(response => response.json())
     .then(data => {
       const bounds = new mapboxgl.LngLatBounds();
@@ -38,8 +38,9 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    bounds.extend([ this.markersValue.lng,  this.markersValue.lat])
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 })
+
   }
 
   toggleMap(e){
@@ -50,7 +51,7 @@ export default class extends Controller {
       console.log("hi")
       this.map = new mapboxgl.Map({
         container: this.imgmapTarget,
-        style: "mapbox://styles/mapbox/streets-v12"
+        style: "mapbox://styles/mapbox/streets-v11"
       })
       this.#addMarkersToMap()
       this.#fitMapToMarkers()
