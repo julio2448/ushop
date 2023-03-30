@@ -5,6 +5,9 @@ class Coupon < ApplicationRecord
   validates_comparison_of :end_time, greater_than_or_equal_to: :start_time
   validates_comparison_of :start_time, greater_than_or_equal_to: Date.today
   has_one_attached :photo
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   include PgSearch::Model
   pg_search_scope :search_coupon,
       against: %i[title end_time product_name product_description],
