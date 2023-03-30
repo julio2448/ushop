@@ -49,51 +49,19 @@
                   </div>
                 <% else %>
                   <div class="button-container">
-                    <%= link_to "Login", new_user_session_path, class: "bttn" %>
-                    <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
-                    <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
+                    <% if @coupon.present? %>
+                      <%= link_to "Login", new_user_session_path(coupon_id: @coupon.id), data: { turbo: false }, class: "bttn" %>
+                      <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
+                      <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
+                    <% else %>
+                      <%= link_to "Login", new_user_session_path, class: "bttn" %>
+                      <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
+                      <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
+                    <% end %>
                     <hr>
                     <button type="button" class="btn btn-secondary" style="margin-bottom: 15px;" data-bs-dismiss="modal">Close</button>
                   </div>
                 <% end %>
-              </div>
-            </div>
-          <div class="header-title">
-            U-SHOP
-          </div>
-          <div class="header-buttons">
-            <button class="avatar" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
-            </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content text-center">
-                  <div class="modal-header" style="justify-content: center;">
-                    <h5>Signup or Login</h5>
-                    <% if user_signed_in? %>
-                      <div class ="button-container" style="margin-left: 50px;">
-                        <%=link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %>
-                        <%# <p style="font-size: small; margin-top: 10px;"><%=link_to "swap",current_user.swap_role%>
-                      </div>
-                    <% else %>
-                      <div class="button-container">
-                        <% if @coupon.present? %>
-                          <%= link_to "Login", new_user_session_path(coupon_id: @coupon.id), data: { turbo: false }, class: "bttn" %>
-                          <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
-                          <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
-                        <% else %>
-                          <%= link_to "Login", new_user_session_path, class: "bttn" %>
-                          <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
-                          <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
-                        <% end %>
-                      </div>
-                      <hr>
-                      <button type="button" class="btn btn-secondary" style="margin-bottom: 15px;" data-bs-dismiss="modal">Close</button>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                </div>
               </div>
             </div>
           </div>
