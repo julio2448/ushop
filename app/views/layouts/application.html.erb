@@ -41,8 +41,9 @@
               <div class="modal-content text-center">
               <div class="modal-header" style="justify-content: center;">
                 <h5>Signup or Login</h5>
+              </div>
                 <% if user_signed_in? %>
-                  <div class ="button-container" style="margin-left: 50px;">
+                  <div class ="button-container" style="margin-left: 15px;">
                     <%=link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %>
                     <p style="font-size: small; margin-top: 10px;">Upgrade to Business</p>
                   </div>

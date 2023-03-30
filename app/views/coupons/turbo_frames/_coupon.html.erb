@@ -1,4 +1,4 @@
-<div class="container" style="justify-content: center; line-height: 2.5;">
+<div class="container-show" style="justify-content: center; line-height: 2.5;">
   <article class="card-show">
     <div class="card-inner-show">
       <div class="card-image-show">
@@ -44,6 +44,6 @@
       <% end %>
       <h2><%= link_to "Back to all Coupons", root_path, class: "bttn" %></h2>
     <% else %>
-      <h2><%= button_to "Sign / Logg in to get this coupon", new_user_session_path(coupon_id: coupon.id), data: { turbo: false}, class: "bttn" %></h2>
+      <h2><%= button_to "Sign / Login to get this coupon", new_user_session_path(coupon_id: coupon.id), data: { turbo: false}, class: "bttn2" %></h2>
     <%end%>
   </div>
