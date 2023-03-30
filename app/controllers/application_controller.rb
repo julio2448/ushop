@@ -14,11 +14,16 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    store_location = stored_location_for(resource)
-    if store_location!=nil
-      coupon_path(store_location)
+    puts resource
+    # store_location = stored_location_for(resource)
+    if session[:coupon_id].present?
+      coupon_path(session[:coupon_id])
     else
       root_path
     end
+  end
+
+  def after_sign_up_path_for(resource)
+    raise
   end
 end
