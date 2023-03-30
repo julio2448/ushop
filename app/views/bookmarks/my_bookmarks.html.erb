@@ -1,30 +1,37 @@
 <div class = "container">
-  <div class="bookmark-container" style = "margin-top: 50px;">
-    <h1><strong>Your saved coupons</strong></h1>
+  <div class="bookmark-container" style = "margin-top: 25px;">
+    <h1 style="margin-bottom: 60px;margin-left: 10;"><strong>Your saved coupons</strong></h1>
       <% @my_bookmarks.each do |bookmark|%>
         <% if bookmark.coupon.available? %>
-          <%= link_to coupon_path(bookmark.coupon), class: "card horizontal text-decoration-none text-black" do %>
-            <div class="card-inner">
+          <div class="card-bookmark horizontal text-decoration-none text-black">
+            <div class="card-inner-bookmark">
               <span class="card-pin simple"></span>
-              <div class="card-image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhuhT25qh-R8z7YkEi6NcGtKWJsgv7Xt-_uWJKWz1yeLc7KmK8bo5zQLO1HAlsWx98ME0&usqp=CAU" />
-              </div>
-              <div class="card-content">
-                <div class="card-meta">
-                  <span class="card-meta-artist"><%= bookmark.coupon.title %></span>
+              <div class="card-content-bookmark">
+                <%= link_to coupon_path(bookmark.coupon), class: "text-decoration-none text-black" do %>
+                  <div class="card-meta-bookmark">
+                    <span class="card-meta-artist-bookmark"><%= bookmark.coupon.title %></span>
+                  </div>
+                <% end %>
+
+                <div class="d-flex align-items-center">
+                  <h2 class="card-title-bookmark">expires:
+                    <span class="card-time-bookmark"><%= bookmark.coupon.end_time%></span>
+                  </h2>
+
+                  <h2 class="trash-icon text-center">
+                    <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                      <i class="fa-solid fa-trash fa-xs" style="color: #ff0000; margin-left: 15px;"></i>
+                    <% end %>
+                  </h2>
                 </div>
-                <h2 class="card-title">EXPIRATION DATE:
-                  <span class="card-time"><%= bookmark.coupon.end_time%></span>
-                </h2>
               </div>
               <span class="card-pin simple"></span>
-              <h2><%= link_to "Delete Coupon", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
             </div>
-          <% end %>
+          </div>
         <% end %>
       <% end %>
   </div>
-</div>
-  <div class="button-container">
+  <div class="button-container" style="margin-bottom: 75px;">
     <%= link_to "All coupons",root_path, class: "bttn" %>
   </div>
+</div>

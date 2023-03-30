@@ -15,21 +15,49 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
+  <body>
     <div class="phone">
-      <body>
-        <%= render "shared/navbar" %>
-        <%= render "shared/flashes" %>
-        <header class="header">
-          <%= link_to root_path do %>
-            <div class="header-logo">
-              <div>
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <header class="header">
+        <%= link_to root_path do %>
+          <div class="header-logo">
+            <div>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
+            </div>
+          </div>
+        <% end %>
+        <div class="header-title">
+          U-SHOP
+        </div>
+        <div class="header-buttons">
+          <button class="avatar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content text-center">
+                <div class="modal-header" style="justify-content: center;">
+                  <h5>U-Shop</h5>
+                </div>
+                <% if user_signed_in? %>
+                  <div class ="button-container" style="margin-left: 15px; height: 80px;">
+                    <%=link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %>
+                  </div>
+                <% else %>
+                  <div class="button-container">
+                    <%= link_to "Login", new_user_session_path, class: "bttn" %>
+                    <%= link_to "Sign-up", new_user_registration_path, class: "bttn" %>
+                    <%= link_to "Register as business",new_user_registration_path, class: "bttn" %>
+                    <hr>
+                    <button type="button" class="btn btn-secondary" style="margin-bottom: 15px;" data-bs-dismiss="modal">Close</button>
+                  </div>
+                <% end %>
               </div>
             </div>
-          <% end %>
           <div class="header-title">
             U-SHOP
           </div>
@@ -69,11 +97,10 @@
               </div>
             </div>
           </div>
-        </header>
-
+        </div>
+      </header>
       <%= yield %>
       <%= render "shared/footer" %>
     </div>
   </body>
-  </div>
 </html>
