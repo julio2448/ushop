@@ -1,4 +1,10 @@
 <div class="badge fs-1 text-dark">
-  <%= user.email %>
-  <%= user.address %>
+  <ul>
+  <% if record.class == Coupon%>
+    <li><%= link_to record.title,coupon_path(record) %></li>
+  <% else %>
+    <li>Your Location </li>
+  <% end %>
+  <li><%= record.address %></li>
+  </ul>
 </div>

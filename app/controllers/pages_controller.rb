@@ -9,16 +9,22 @@ class PagesController < ApplicationController
       @coupons = Coupon.all
     end
 
-    if current_user
-      @markers =
-        {
-          lat: current_user.latitude,
-          lng: current_user.longitude,
-          info_window_html: render_to_string(partial: "pages/marker", locals: { user: current_user}, formats: [:html]),
-          marker_html: render_to_string(partial: "pages/marker", locals: { user: current_user}, formats: [:html])
-        }
+    @markers = @coupons.geocoded.map do |coupon|
+      {
+        lat: coupon.latitude,
+        lng: coupon.longitude,
+        info_window_html: render_to_string(partial: "pages/marker", locals: { record: coupon }, formats: [:html]),
+        marker_html: render_to_string(partial: "pages/marker", locals: { record: coupon }, formats: [:html])
+      }
     end
-
+    if current_user
+      @markers << {
+        lat: current_user.latitude,
+        lng: current_user.longitude,
+        info_window_html: render_to_string(partial: "pages/marker", locals: { record: current_user }, formats: [:html]),
+        marker_html: render_to_string(partial: "pages/marker", locals: { record: current_user }, formats: [:html])
+      }
+    end
 
     if params[:coupon_id].present?
       render turbo_stream: turbo_stream.update("coupon_cards", partial: "coupons/turbo_frames/coupon", locals: { coupon: Coupon.find(params[:coupon_id]) }, formats: [:html])

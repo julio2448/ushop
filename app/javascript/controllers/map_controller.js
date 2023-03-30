@@ -5,14 +5,19 @@ export default class extends Controller {
   static targets = ['imgmap']
   static values = {
     apiKey: String,
-    markers: Object
+    markers: Array
   }
 
   connect() {
-
   }
 
   #addMarkersToMap() {
+    // this.markersValue.forEach((marker) => {
+    //   new mapboxgl.Marker()
+    //     .setLngLat([ marker.lng, marker.lat ])
+    //     .addTo(this.map)
+    //   })
+
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/supermarket.json&groceries.json?proximity=${this.markersValue.lng},${this.markersValue.lat}&access_token=${this.apiKeyValue}&limit=10`)
     .then(response => response.json())
     .then(data => {
@@ -28,18 +33,23 @@ export default class extends Controller {
     })
     .catch(error => console.error(error));
 
-    const popup = new mapboxgl.Popup().setHTML(this.markersValue.info_window_html)
 
+    this.markersValue.forEach((marker) => {
+    const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
     new mapboxgl.Marker()
-      .setLngLat([ this.markersValue.lng,  this.markersValue.lat ])
+      .setLngLat([ marker.lng,  marker.lat ])
       .setPopup(popup)
       .addTo(this.map);
+    })
   }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    bounds.extend([ this.markersValue.lng,  this.markersValue.lat])
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 })
+    this.markersValue.forEach((marker) => {
+
+      bounds.extend([ marker.lng,  marker.lat])
+      this.map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 0 })
+    })
 
   }
 
