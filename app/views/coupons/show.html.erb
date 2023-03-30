@@ -1,7 +1,8 @@
 <div style="margin-top: 100px; margin-bottom: 100px;">
 <turbo-frame id="<%= @coupon_id %>">
 </turbo-frame>
-
+<%if current_user.present?%>
+  <%if current_user.customer?%>
 <div class="show-container" style="justify-content: center; line-height: 2.5;">
   <h1> Coupon info:</h1>
    <article class="card-show">
@@ -36,4 +37,22 @@
     </div>
   </article>
 </div>
+ <div class="button-container" style="margin-top: 30px; justify-content: center; text-align: center;">
+    <% if user_signed_in? %>
+      <% if current_user == @coupon.owner%>
+        <h2><%= link_to "Delete Coupon", coupon_path(@coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
+        <h2><%= link_to "Edit Coupon", edit_coupon_path(@coupon), class: "bttn" %></h2>
+      <% elsif current_user.bookmarks.map(&:coupon_id).include?(@coupon.id) %>
+            <h2>You already own this coupon</h2>
+        <% else %>
+        <h2><%= button_to "Add this Coupon", create_bookmark_path(@coupon.id), data: { turbo: false}, class: "bttn"%></h2>
+      <% end %>
+      <h2><%= link_to "Back to all Coupons", root_path, class: "bttn" %></h2>
+    <%end%>
+  </div>
 </div>
+<%else%>
+ Need to be logged as customer to see this page
+ <h2><%= link_to "Back to all Coupons", root_path %>
+<%end%>
+<%end%>
