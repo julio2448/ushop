@@ -21,4 +21,5 @@ Rails.application.routes.draw do
       patch :approve, :reject
     end
   end
+  get "*path", to: "errors#not_found", via: :all
 end
