@@ -22,4 +22,12 @@ class User < ApplicationRecord
   def owner?
     role == "business"
   end
+
+  def swap_role
+    if customer?
+      self.role = "business"
+    else
+      self.role = "customer"
+    end
+  end
 end
