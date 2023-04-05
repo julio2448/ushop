@@ -5,51 +5,45 @@ export default class extends Controller {
   static targets = ['imgmap']
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Object
   }
 
   connect() {
+
   }
 
   #addMarkersToMap() {
-    // this.markersValue.forEach((marker) => {
-    //   new mapboxgl.Marker()
-    //     .setLngLat([ marker.lng, marker.lat ])
-    //     .addTo(this.map)
-    //   })
-
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/supermarket.json&groceries.json?proximity=${this.markersValue.lng},${this.markersValue.lat}&access_token=${this.apiKeyValue}&limit=10`)
     .then(response => response.json())
     .then(data => {
       const bounds = new mapboxgl.LngLatBounds();
       data.features.forEach((supermarket) => {
-        const popup = new mapboxgl.Popup().setHTML(supermarket.place_name);
+        // add a link to the supermarket place name and do a fetch to the pages_controller#index
+        // with the supermarket name as a parameter:
+        // add an event listener to the link to hide the map
+        const popup = new mapboxgl.Popup().setHTML(`<a data-action="click->map#toggleMap" href="/?supermarket=${supermarket.place_name}">${supermarket.place_name}</a>`)
         new mapboxgl.Marker({color: '#E0115F'})
         .setLngLat(supermarket.geometry.coordinates)
-          .setPopup(popup)
-          .addTo(this.map);
+        .setPopup(popup)
+        .addTo(this.map);
         bounds.extend(supermarket.geometry.coordinates);
       });
     })
     .catch(error => console.error(error));
 
 
-    this.markersValue.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+    const popup = new mapboxgl.Popup().setHTML(this.markersValue.info_window_html)
+
     new mapboxgl.Marker()
-      .setLngLat([ marker.lng,  marker.lat ])
+      .setLngLat([ this.markersValue.lng,  this.markersValue.lat ])
       .setPopup(popup)
       .addTo(this.map);
-    })
   }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach((marker) => {
-
-      bounds.extend([ marker.lng,  marker.lat])
-      this.map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 0 })
-    })
+    bounds.extend([ this.markersValue.lng,  this.markersValue.lat])
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 })
 
   }
 
