@@ -252,8 +252,10 @@
 @media screen and (min-width: 765px)  {
   .card-inner-show {
     display: flex;
-    max-height: 500px;
+    max-height: 625px;
     flex-direction: column;
+    max-width: 300px;
+
     border: 2px solid var(--c-gray-900);
     border-radius: 20px;
     padding: 0.5rem;
