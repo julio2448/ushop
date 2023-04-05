@@ -1,8 +1,6 @@
 <div style="margin-top: 100px; margin-bottom: 100px;">
 <turbo-frame id="<%= @coupon_id %>">
 </turbo-frame>
-<%if current_user.present?%>
-  <%if current_user.customer?%>
 <div class="show-container" style="justify-content: center; line-height: 2.5;">
   <h1> Coupon info:</h1>
    <article class="card-show">
@@ -51,8 +49,3 @@
     <%end%>
   </div>
 </div>
-<%else%>
- Need to be logged as customer to get the coupons
- <h2><%= link_to "Back to all Coupons", root_path %>
-<%end%>
-<%end%>
