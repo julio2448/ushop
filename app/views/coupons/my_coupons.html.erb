@@ -1,11 +1,9 @@
-<h1>Your posted Coupons:</h1>
-  <section class="posted-coupons" style="margin-bottom: 60px; margin-top: 70px;">
+<h1 style="margin-left: 25px;">Your posted Coupons:</h1>
+  <section class="posted-coupons" style="margin-bottom: 60px; margin-top: 50px;">
     <% @my_coupons.each do |coupon|%>
       <%= link_to coupon_path(coupon), class: "card horizontal text-decoration-none text-black" do %>
         <div class="card-inner">
-          <div class="card-image">
-            <img src="https://previews.123rf.com/images/arbuzu/arbuzu1411/arbuzu141100095/33639605-letra-u-logo-icono-elementos-de-plantilla-de-dise%C3%B1o.jpg" />
-          </div>
+
           <div class="card-content">
             <% if coupon.available?%>
               <div class="card-meta">

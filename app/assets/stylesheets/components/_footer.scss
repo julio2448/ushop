@@ -46,6 +46,9 @@
 
 .menu {
   position: fixed;
-  width: 85vw;
+  width: 90vw;
   bottom: 15px;
+  z-index: 5;
+  left: 5vw;
+  right: 5vw;
 }

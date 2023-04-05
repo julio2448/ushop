@@ -1,4 +1,4 @@
-<div class="container" style="justify-content: center; line-height: 2.5;">
+<div class="show-container" style="justify-content: center; line-height: 2.5;">
   <article class="card-show">
     <div class="card-inner-show">
       <div class="card-image-show">
@@ -32,19 +32,19 @@
     </div>
   </article>
 </div>
-<div class="button-container" style="margin-top: 290px; margin-bottom: 100px; justify-content: center; text-align: center;">
-  <% if user_signed_in? %>
-    <% if current_user == coupon.owner%>
-      <h2><%= link_to "Delete Coupon", coupon_path(coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
-      <h2><%= link_to "Edit Coupon", edit_coupon_path(coupon),data: { turbo: false}, class: "bttn" %></h2>
-    <% elsif current_user.bookmarks.map(&:coupon_id).include?(coupon.id) %>
-      <h2>You already own this coupon</h2>
-    <% elsif current_user.customer? %>
-      <h2><%= button_to "Add this Coupon", create_bookmark_path(coupon.id), data: { turbo: false}, class: "bttn"%></h2>
-    <% end %>
-    <h2><%= link_to "Back to all Coupons", root_path, class: "bttn" %></h2>
-  <% else %>
-    <% session[:coupon_id] = coupon.id %>
-    <h2><%= button_to "Sign / Logg in to get this coupon", new_user_session_path(coupon_id: coupon.id), data: { turbo: false}, class: "bttn" %></h2>
-  <%end%>
-</div>
+
+  <div class="button-container" style="margin-top: 100px; margin-bottom: 40px; justify-content: center; text-align: center;">
+    <% if user_signed_in? %>
+      <% if current_user == coupon.owner%>
+        <h2><%= link_to "Delete Coupon", coupon_path(coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>
+        <h2><%= link_to "Edit Coupon", edit_coupon_path(coupon),data: { turbo: false}, class: "bttn" %></h2>
+      <% elsif current_user.bookmarks.map(&:coupon_id).include?(coupon.id) %>
+            <h2>You already own this coupon</h2>
+        <% elsif current_user.customer? %>
+        <h2><%= button_to "Add this Coupon", create_bookmark_path(coupon.id), data: { turbo: false}, class: "bttn"%></h2>
+      <% end %>
+      <h2><%= link_to "Back to all Coupons", root_path, class: "bttn" %></h2>
+    <% else %>
+      <h2><%= button_to "Sign or Login to get this coupon", new_user_session_path(coupon_id: coupon.id), data: { turbo: false}, class: "bttn2" %></h2>
+    <%end%>
+  </div>
