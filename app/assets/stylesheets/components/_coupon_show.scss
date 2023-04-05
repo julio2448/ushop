@@ -241,50 +241,82 @@
   min-height: 100vh;
 }
 
-
-@media screen and (min-width: 768px) {
-  .container {
-    margin-left: 10%;
-    margin-top: 120px;
-  }
-
-  .card-show {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .card-image-show img {
-    height: 400px;
-    width: 500px;
-  }
-  .card-meta-show {
-    margin-top: 20px;
-    font-size: 18px;
-  }
-  .coupon-code-show {
-    font-size: 50px;
-    margin-left: 25px;
-  }
-  .button-container {
-    margin-left: -20%;
-    margin-top: 80px;
-  }
-
-  .ul {
-     justify-content: center;
-    font-size: 25px;
-  }
-}
-
 .show-container{
   margin-top: -50px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 75vh;
+}
+
+@media screen and (min-width: 765px)  {
+  .card-inner-show {
+    display: flex;
+    max-height: 500px;
+    flex-direction: column;
+    border: 2px solid var(--c-gray-900);
+    border-radius: 20px;
+    padding: 0.5rem;
+    background-color: #fff;
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      width: 95%;
+      height: 100%;
+      bottom: -9px;
+      left: calc(50% - 47.5%);
+      border-radius: 20px;
+      border: 2px solid var(--c-gray-900);
+      background-color: var(--c-yellow-300);
+    }
+  }
+
+
+  .card-image-show {
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    img {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+
+  .card-meta-show {
+    padding-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-title-show {
+    margin-top: 0.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .show-container{
+    margin-top: -50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+  }
 }
