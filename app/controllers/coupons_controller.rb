@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class CouponsController < ApplicationController
   before_action :authenticate_user!, only: [:destroy]
 
@@ -40,7 +42,7 @@ class CouponsController < ApplicationController
   def create
     @coupon = Coupon.new(coupon_params)
     @coupon.owner = current_user
-    attach_ai_image_to_coupon if params[:coupon][:ai_image] == true
+    attach_ai_image_to_coupon if params[:coupon][:ai_image] == "1"
     if @coupon.save
       redirect_to @coupon
     else

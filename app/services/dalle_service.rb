@@ -6,11 +6,11 @@ class DalleService
   end
 
   def content_image(coupon)
-    prompt = "Create an image of a coupon with the title #{title} and the description #{description}"
+    prompt = "Create an image of a coupon with the title #{coupon.product_name} and the description #{coupon.product_description}."
 
     response = @client.images.generate(
       parameters: {
-        prompt: prompt, size: "200x200"
+        prompt: prompt, size: "256x256"
     })
 
     return response.dig("data", 0, "url")
