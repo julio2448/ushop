@@ -1,4 +1,6 @@
 require 'open-uri'
+require 'faker'
+
 
 puts "Creating 10 users"
 10.times do |n|
