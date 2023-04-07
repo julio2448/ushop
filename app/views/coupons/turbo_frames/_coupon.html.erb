@@ -33,7 +33,7 @@
   </article>
 </div>
 
-  <div class="button-container" style="margin-top: 100px; margin-bottom: 40px; justify-content: center; text-align: center;">
+  <div class="button-container" style="margin-top: 140px; margin-bottom: 40px; justify-content: center; text-align: center;">
     <% if user_signed_in? %>
       <% if current_user == coupon.owner%>
         <h2><%= link_to "Delete Coupon", coupon_path(coupon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bttn" %></h2>

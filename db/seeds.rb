@@ -211,7 +211,7 @@ coupon12 = Coupon.create!(
   product_description: "Only valid at Walmart Av. Miguel Ángel de Quevedo",
   code: Faker::Code.nric,
   owner: User.owners.sample,
-  address: "Av. Miguel Ángel de Quevedo 175, Oxtopulco, Coyoacán, 04318 Ciudad de México, CDMX"
+  address: 'Walmart, Av. Miguel Ángel de Quevedo 175, Mexico City, 04318, Mexico'
 )
 file12 = URI.open("https://www.southernsavers.com/wp-content/uploads/2010/10/Screen-shot-2010-10-27-at-2.39.31-PM.png")
 coupon12.photo.attach(io: file12, filename: 'apples20.jpg', content_type: 'image/jpg')
@@ -227,7 +227,7 @@ coupon13 = Coupon.create!(
   product_description: "25% off chicken only valid on Walmart Miguel Ángel de Quevedo",
   code: Faker::Code.nric,
   owner: User.owners.sample,
-  address: "Av. Miguel Ángel de Quevedo 175, Oxtopulco, Coyoacán, 04318 Ciudad de México, CDMX"
+  address: 'Walmart, Av. Miguel Ángel de Quevedo 175, Mexico City, 04318, Mexico'
 )
 file13 = URI.open("https://media.wgrz.com/assets/KCEN/images/456801750/456801750_750x422.png")
 coupon13.photo.attach(io: file13, filename: 'chicken25.jpg', content_type: 'image/jpg')
