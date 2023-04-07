@@ -3,7 +3,11 @@
       <%= link_to root_path(coupon_id: coupon.id ), class: "card col", style: "text-decoration: none; color: black;", method: :get, remote: :true   do %>
           <div class="card-inner">
             <div class="card-image">
+              <% if coupon.photo.key %>
+                <%= cl_image_tag coupon.photo.key, height: 300, width: 400, crop: :fill %>
+              <% else%>
               <img src="https://assets.iflscience.com/assets/articleNo/50863/iImg/48507/1544028330-46162315-2208445412552773-8381301981456629760-n.jpg" />
+              <% end %>
             </div>
             <div class="card-content">
               <div class="card-meta">
