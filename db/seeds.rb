@@ -179,17 +179,98 @@ coupon10 = Coupon.create!(
   code: Faker::Code.nric,
   owner: User.owners.sample,
   address: "Tottus, Av. San Luis 2399, Lima, Lima Province 15037, Peru"
+
 )
 file10 = URI.open("https://d168jcr2cillca.cloudfront.net/uploadimages/coupons/13661-The_Chocolate_Room_Somajiguda_Coupon_3.jpg")
 coupon10.photo.attach(io: file10, filename: 'chocolate.jpg', content_type: 'image/jpg')
 coupon10.save!
 puts "Tenth real business created"
 
-puts "Creating 30 bookmarks"
-30.times do
+puts "Eleventh real business"
+coupon11 = Coupon.new(
+  title: "Nutella 10% off at Chedraui",
+  start_time: Faker::Date.between(from: (1..3).to_a.sample.days.from_now, to: (3..5).to_a.sample.days.from_now),
+  end_time: Faker::Date.between(from: (6..8).to_a.sample.days.from_now, to: (9..10).to_a.sample.days.from_now),
+  product_name: "Nutella",
+  product_description: "Nutella",
+  code: Faker::Code.nric,
+  owner: User.owners.sample,
+  address: "Chedraui, Eje 10 Sur (Av. Pedro Henríquez Ureña) 514, Mexico City, 04330, Mexico"
+)
+file11 = URI.open("https://www.krogerkrazy.com/wp-content/uploads/2016/08/4-7.png")
+coupon11.photo.attach(io: file11, filename: 'nutella.jpg', content_type: 'image/jpg')
+coupon11.save!
+puts "Eleventh real business created"
+
+puts "Twelfth real business"
+coupon12 = Coupon.create!(
+  title: "20% off apples at Walmart",
+  start_time: Faker::Date.between(from: (1..3).to_a.sample.days.from_now, to: (3..5).to_a.sample.days.from_now),
+  end_time: Faker::Date.between(from: (6..8).to_a.sample.days.from_now, to: (9..10).to_a.sample.days.from_now),
+  product_name: "Apples",
+  product_description: "Only valid at Walmart Av. Miguel Ángel de Quevedo",
+  code: Faker::Code.nric,
+  owner: User.owners.sample,
+  address: "Av. Miguel Ángel de Quevedo 175, Oxtopulco, Coyoacán, 04318 Ciudad de México, CDMX"
+)
+file12 = URI.open("https://www.southernsavers.com/wp-content/uploads/2010/10/Screen-shot-2010-10-27-at-2.39.31-PM.png")
+coupon12.photo.attach(io: file12, filename: 'apples20.jpg', content_type: 'image/jpg')
+coupon12.save!
+puts "Twelfth real business created"
+
+puts "Thirteenth real business"
+coupon13 = Coupon.create!(
+  title: "25% off chicken at Walmart",
+  start_time: Faker::Date.between(from: (1..3).to_a.sample.days.from_now, to: (3..5).to_a.sample.days.from_now),
+  end_time: Faker::Date.between(from: (6..8).to_a.sample.days.from_now, to: (9..10).to_a.sample.days.from_now),
+  product_name: "Chicken",
+  product_description: "25% off chicken only valid on Walmart Miguel Ángel de Quevedo",
+  code: Faker::Code.nric,
+  owner: User.owners.sample,
+  address: "Av. Miguel Ángel de Quevedo 175, Oxtopulco, Coyoacán, 04318 Ciudad de México, CDMX"
+)
+file13 = URI.open("https://media.wgrz.com/assets/KCEN/images/456801750/456801750_750x422.png")
+coupon13.photo.attach(io: file13, filename: 'chicken25.jpg', content_type: 'image/jpg')
+coupon13.save!
+puts "Thirteenth real business created"
+
+puts "Fourteenth real business"
+coupon14 = Coupon.create!(
+  title: "10% off on all products at Chedraui",
+  start_time: Faker::Date.between(from: (1..3).to_a.sample.days.from_now, to: (3..5).to_a.sample.days.from_now),
+  end_time: Faker::Date.between(from: (6..8).to_a.sample.days.from_now, to: (9..10).to_a.sample.days.from_now),
+  product_name: "All products",
+  product_description: "Only valid at Chedraui first 80 customers",
+  code: Faker::Code.nric,
+  owner: User.owners.sample,
+  address: "Chedraui, Eje 10 Sur (Av. Pedro Henríquez Ureña) 514, Mexico City, 04330, Mexico"
+)
+file14 = URI.open("https://i.etsystatic.com/13996512/r/il/3df93d/2093300057/il_fullxfull.2093300057_kzah.jpg")
+coupon14.photo.attach(io: file14, filename: 'allproducts.jpg', content_type: 'image/jpg')
+coupon14.save!
+puts "Fourteenth real business created"
+
+puts "Fifteenth real business"
+coupon15 = Coupon.create!(
+  title: "15% off on Nestle products at Chedraui",
+  start_time: Faker::Date.between(from: (1..3).to_a.sample.days.from_now, to: (3..5).to_a.sample.days.from_now),
+  end_time: Faker::Date.between(from: (6..8).to_a.sample.days.from_now, to: (9..10).to_a.sample.days.from_now),
+  product_name: "Nestle products",
+  product_description: "Nestle Products only valid at Chedraui",
+  code: Faker::Code.nric,
+  owner: User.owners.sample,
+  address: "Chedraui, Eje 10 Sur (Av. Pedro Henríquez Ureña) 514, Mexico City, 04330, Mexico"
+)
+file15 = URI.open("https://www.ruthdelacruz.com/wp-content/uploads/2022/01/shopee-nestle.png")
+coupon15.photo.attach(io: file15, filename: 'nestle.png', content_type: 'image/png')
+coupon15.save!
+puts "Fifteenth real business created"
+
+
+puts "Creating 45 bookmarks"
+45.times do
   Bookmark.create!(
     client: User.customers.sample,
     coupon: Coupon.all.sample
   )
 end
-puts "30 bookmarks created"
