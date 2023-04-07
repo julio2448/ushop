@@ -8,6 +8,8 @@
     <%= f.input :product_description %>
     <%= f.input :code %>
     <%= f.input :address, placeholder: "Enter your exact address" %>
+    <%= f.label :ai_image, "Use AI to generate image" %>
+    <%= f.check_box :ai_image %>
     <%= f.input :photo, as: :file %>
     <%= f.submit %>
   <% end %>
