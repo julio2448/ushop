@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_202031) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_07_183918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_202031) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.boolean "ai_image", default: false
     t.index ["owner_id"], name: "index_coupons_on_owner_id"
   end
 
